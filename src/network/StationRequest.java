@@ -4,10 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import station.Station;
-
-import com.google.gson.Gson;
 
 
 
@@ -23,11 +22,14 @@ public class StationRequest {
 			String inputLine;
 			
 			while((inputLine = in.readLine()) != null) {
-				Gson gson = new Gson();
-				Station station = gson.fromJson(inputLine, Station.class);
-				
-				System.out.println(station.getHafas().getSites().getSite().getNumber());
-				return station.getHafas().getSites().getSite().getNumber();
+				//System.out.println(inputLine);
+				JSONObject jobj = new JSONObject(inputLine);
+				JSONObject ja = jobj.getJSONObject("Hafas").getJSONObject("Sites").getJSONObject("Site");
+				if(ja.has("Number")) {
+						System.out.println(ja.getString("Number"));
+						return Integer.parseInt(ja.getString("Number"));
+				}
+
 			}
 			return -1;		
 			
