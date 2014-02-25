@@ -8,8 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-
-
 public class StationRequest {
 
 	public static int request (String stationName) throws Exception{
@@ -29,14 +27,11 @@ public class StationRequest {
 						System.out.println(ja.getString("Number"));
 						return Integer.parseInt(ja.getString("Number"));
 				}
-
 			}
 			return -1;		
 			
 		} finally {
 			in.close();
 		}
-
 	}
-
 }

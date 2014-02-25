@@ -33,14 +33,10 @@ public class SubwayRequest {
 					}
 				}
 				return rows;
-
 			}
 			return "Not found";		
-
 		} finally {
 			in.close();
 		}
-
 	}
-
 }
